@@ -4,10 +4,9 @@ from waitress import serve
 
 app = Flask(__name__)
 
-data = requests.get('https://colonist.io/api/game-list').json()
-
 @app.route('/')
 def get_data():
+    data = requests.get('https://colonist.io/api/game-list').json()
     resp = jsonify(data)
     resp.headers['Access-Control-Allow-Origin'] = '*'  # Allow all origins
     return resp
